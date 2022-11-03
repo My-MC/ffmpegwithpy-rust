@@ -9,14 +9,14 @@ fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
 
 fn get_filename(filepath: &str, file_format: &str) -> String {
     let filename: Vec<&str> = filepath.split(".").collect();
-    let after_filename = filename[0].to_owned() + "." + file_format;
+    let after_filename = format!("{}.{}", filename[0], file_format);
 
     return after_filename;
 }
 
 fn ffmpeg_cmd(filepath: &str, file_format: &str) -> String {
     let after_filename = get_filename(filepath, file_format);
-    let cmd = "ffmpeg".to_owned() + " -i " + filepath + " " + &after_filename;
+    let cmd = format!("ffmpeg -i {} {}", filepath, after_filename);
 
     return cmd;
 }
