@@ -1,12 +1,6 @@
 use pyo3::prelude::*;
 use std::process::Command;
 
-/// Formats the sum of two numbers as string.
-#[pyfunction]
-fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
-    Ok((a + b).to_string())
-}
-
 fn get_filename(filepath: &str, file_format: &str) -> String {
     let filename: Vec<&str> = filepath.split(".").collect();
     let after_filename = format!("{}.{}", filename[0], file_format);
@@ -79,7 +73,6 @@ impl FFmpeg {
 /// A Python module implemented in Rust.
 #[pymodule]
 fn ffmpegwithpy(_py: Python, m: &PyModule) -> PyResult<()> {
-    m.add_function(wrap_pyfunction!(sum_as_string, m)?)?;
     m.add_function(wrap_pyfunction!(python_get_filename, m)?)?;
     m.add_class::<FFmpeg>()?;
     Ok(())
