@@ -14,5 +14,10 @@ crate-type = ["cdylib"]
 [dependencies]
 pyo3 = { version = "0.17.3", features = ["extension-module", "abi3-py37"] }
 
+[profile.release]
+strip = true
+opt-level = "s"
+lto = true
+
 [package.metadata.maturin]
 python-source = "python"
