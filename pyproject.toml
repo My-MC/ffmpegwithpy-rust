@@ -18,6 +18,7 @@ dev = [
     "black==22.10.0",
     "isort==5.10.1",
     "taskipy==1.10.3",
+    "ruff==0.0.114",
 ]
 
 [tool.maturin]
@@ -30,19 +31,33 @@ exclude = '''
     migrations
     | .mypy_cache
     | .pytest_cache
+    | .ruff_cache
     | .venv
     | target
 )
 '''
 
-[tool.isort]
-profile = "black"
-line_length = 119
+[tool.ruff]
+line-length = 119
+
+select = ["F", "E", "W", "I"]
+
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".pytest_cache",
+    ".venv",
+    "dist",
+    "target",
+]
 
 [tool.taskipy.tasks]
 fmt_black = "black ."
-fmt_isort = "isort ."
+fmt_ruff = "ruff . --fix"
 fmt_rust = "cargo fmt"
-fmt = "task fmt_black & task fmt_isort & task fmt_rust"
+fmt = "task fmt_black & task fmt_ruff &task fmt_rust"
+
+lint = "ruff ."
 
 dev = "maturin dev -E dev"

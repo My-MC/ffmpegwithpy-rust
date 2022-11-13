@@ -1,5 +1,4 @@
 import pytest
-
 from ffmpegwithpy import FFmpeg, get_filename
 
 

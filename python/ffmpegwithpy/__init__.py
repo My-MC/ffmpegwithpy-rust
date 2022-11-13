@@ -1,5 +1,3 @@
-from .ffmpegwithpy import *
+from .ffmpegwithpy import FFmpeg, get_filename
 
-__doc__ = ffmpegwithpy.__doc__
-if hasattr(ffmpegwithpy, "__all__"):
-    __all__ = ffmpegwithpy.__all__
+__all__ = ["FFmpeg", "get_filename"]
