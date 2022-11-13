@@ -3,29 +3,23 @@ use std::collections::HashMap;
 use std::process::Command;
 
 fn get_filename(filepath: &str, file_format: &str) -> String {
-    let filename: Vec<&str> = filepath.split(".").collect();
+    let filename: Vec<&str> = filepath.split('.').collect();
     let after_filename = format!("{}.{}", filename[0], file_format);
 
-    return after_filename;
+    after_filename
 }
 
 fn parse_options(options: &HashMap<String, usize>) -> String {
     let mut option_vec: Vec<String> = Vec::new();
 
-    match options.get("qv") {
-        Some(&val) => {
-            let opt = format!("-q:v {}", val);
-            option_vec.push(opt)
-        }
-        None => (),
+    if let Some(&val) = options.get("qv") {
+        let opt = format!("-q:v {}", val);
+        option_vec.push(opt)
     }
 
-    match options.get("ab") {
-        Some(&val) => {
-            let opt = format!("-ab {}", val);
-            option_vec.push(opt)
-        }
-        None => (),
+    if let Some(&val) = options.get("ab") {
+        let opt = format!("-ab {}", val);
+        option_vec.push(opt)
     }
 
     let mut option_arg = String::from(" ");
@@ -34,7 +28,7 @@ fn parse_options(options: &HashMap<String, usize>) -> String {
         option_arg += i
     }
 
-    return option_arg;
+    option_arg
 }
 
 fn ffmpeg_cmd(
@@ -44,17 +38,14 @@ fn ffmpeg_cmd(
 ) -> String {
     let mut option_arg = String::new();
 
-    match options {
-        Some(val) => {
-            option_arg = parse_options(val);
-        }
-        None => (),
+    if let Some(val) = options {
+        option_arg = parse_options(val);
     }
 
     let after_filename = get_filename(filepath, file_format);
     let cmd = format!("ffmpeg -i {} {}{}", filepath, after_filename, option_arg);
 
-    return cmd;
+    cmd
 }
 
 #[pyfunction]
@@ -85,12 +76,10 @@ impl FFmpeg {
 
     #[pyo3(name = "ffmpeg_cmd")]
     fn python_ffmpeg_cmd(&self) -> PyResult<String> {
-        let cmd: String;
-
-        match &self.options {
-            Some(val) => cmd = ffmpeg_cmd(&self.filepath, &self.file_format, Some(val)),
-            None => cmd = ffmpeg_cmd(&self.filepath, &self.file_format, None),
-        }
+        let cmd: String = match &self.options {
+            Some(val) => ffmpeg_cmd(&self.filepath, &self.file_format, Some(val)),
+            None => ffmpeg_cmd(&self.filepath, &self.file_format, None),
+        };
 
         Ok(cmd)
     }
