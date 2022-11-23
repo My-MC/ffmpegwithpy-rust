@@ -13,16 +13,16 @@ fn parse_options(options: &HashMap<String, usize>) -> String {
     let mut option_vec: Vec<String> = Vec::new();
 
     if let Some(&val) = options.get("qv") {
-        let opt = format!("-q:v {}", val);
+        let opt = format!(" -q:v {}", val);
         option_vec.push(opt)
     }
 
     if let Some(&val) = options.get("ab") {
-        let opt = format!("-ab {}", val);
+        let opt = format!(" -ab {}", val);
         option_vec.push(opt)
     }
 
-    let mut option_arg = String::from(" ");
+    let mut option_arg = String::from("");
 
     for i in option_vec.iter() {
         option_arg += i
@@ -43,7 +43,7 @@ fn ffmpeg_cmd(
     }
 
     let after_filename = get_filename(filepath, file_format);
-    let cmd = format!("ffmpeg -i {} {}{}", filepath, after_filename, option_arg);
+    let cmd = format!("ffmpeg -y -i {}{} {}", filepath, option_arg, after_filename);
 
     cmd
 }
