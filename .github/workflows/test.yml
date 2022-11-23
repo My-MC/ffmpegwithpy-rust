@@ -30,6 +30,9 @@ jobs:
         if: steps.venv_cache.outputs.cache-hit != 'true'
         run: python -m venv .venv
 
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2.2.0
+
       - name: Install Dev dependence And run tests
         run: |
           source .venv/bin/activate
