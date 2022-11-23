@@ -122,7 +122,7 @@ mod tests {
     fn test_ffmpeg_cmd_1() {
         assert_eq!(
             ffmpeg_cmd("test.mp4", "mp3", None),
-            "ffmpeg -i test.mp4 test.mp3"
+            "ffmpeg -y -i test.mp4 test.mp3"
         )
     }
 
@@ -133,7 +133,7 @@ mod tests {
 
         assert_eq!(
             ffmpeg_cmd("test.mp4", "mp3", Some(&options)),
-            "ffmpeg -i test.mp4 test.mp3 -q:v 1"
+            "ffmpeg -y -i test.mp4 -q:v 1 test.mp3"
         )
     }
 
