@@ -20,7 +20,7 @@ jobs:
         with:
           toolchain: stable
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3.0.11
         id: venv_cache
         with:
           path: .venv
@@ -47,6 +47,9 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2.2.0
 
       - name: Run unittest
         uses: actions-rs/cargo@v1
