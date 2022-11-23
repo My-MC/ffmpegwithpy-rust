@@ -7,23 +7,34 @@ jobs:
   pytest:
     runs-on: ubuntu-latest
     steps:
-
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Setup Python
         uses: actions/setup-python@v4.3.0
         with:
-          python-version: '3.10'
+          python-version: "3.7"
 
       - name: Setup rust toolchain
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
 
+      - uses: actions/cache@v3.0.11
+        id: venv_cache
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('./pyproject.toml') }}
+
+      - name: Create venv
+        if: steps.venv_cache.outputs.cache-hit != 'true'
+        run: python -m venv .venv
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2.2.0
+
       - name: Install Dev dependence And run tests
         run: |
-          python -m venv .venv
           source .venv/bin/activate
           pip install maturin
           maturin dev --extras dev
@@ -32,7 +43,6 @@ jobs:
   cargo:
     runs-on: ubuntu-latest
     steps:
-
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -40,6 +50,9 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2.2.0
 
       - name: Run unittest
         uses: actions-rs/cargo@v1
