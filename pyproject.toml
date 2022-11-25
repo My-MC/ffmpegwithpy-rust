@@ -13,7 +13,7 @@ classifiers = [
 
 [project.optional-dependencies]
 dev = [
-    "maturin==0.14.1",
+    "maturin==0.14.2",
     "pytest==7.2.0",
     "black==22.10.0",
     "isort==5.10.1",
