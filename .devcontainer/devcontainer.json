@@ -2,8 +2,9 @@
 	"name": "Ubuntu",
 	"image": "mcr.microsoft.com/devcontainers/base:focal",
 	"features": {
-		"ghcr.io/devcontainers/features/powershell:1": {},
-		"ghcr.io/devcontainers/features/python:1": {},
+		"ghcr.io/devcontainers/features/python:1": {
+			"installTools": false
+		},
 		"ghcr.io/devcontainers/features/rust:1": {}
 	}
 
