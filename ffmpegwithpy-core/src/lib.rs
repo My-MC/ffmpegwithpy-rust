@@ -1,5 +1,20 @@
 use std::collections::HashMap;
 
+/// This function returns the name of the file after processing
+///
+/// # Arguments
+///
+/// * `filepath` - The path of file to process.
+/// * `file_format` - The file format to be processed.
+///
+/// # Example
+///
+/// ```
+/// use ffmpegwithpy_core::get_filename;
+///
+/// let filename = get_filename("Get_filename.mp4","mp3");
+/// println!("{}", filename);
+/// ```
 pub fn get_filename(filepath: &str, file_format: &str) -> String {
     let filename: Vec<&str> = filepath.split('.').collect();
     let after_filename = format!("{}.{}", filename[0], file_format);
@@ -29,6 +44,23 @@ fn parse_options(options: &HashMap<String, usize>) -> String {
     option_arg
 }
 
+/// This function returns the ffmpeg command.
+///
+/// # Arguments
+///
+/// * `filepath` - The path of the file to process.
+/// * `file_format` - The file format to be processed.
+/// * `options` - The options to process.
+///
+/// **Note** `options` is Optional arguments.
+///
+/// # Example
+/// ```
+/// use ffmpegwithpy_core::ffmpeg_cmd;
+///
+/// let cmd = ffmpeg_cmd("ffmpeg_cmd.mp4", "mp3", None);
+/// println!("{}", cmd);
+/// ```
 pub fn ffmpeg_cmd(
     filepath: &str,
     file_format: &str,
