@@ -7,7 +7,7 @@ This registry is a Rust rewrite of [ffmpegwithpy](https://github.com/My-MC/ffmpe
 ### Install Dependence
 
 ``` bash
-pip install -r requirements.txt
+pip install maturin taskipy
 ```
 
 ### Develop Build
@@ -16,8 +16,18 @@ pip install -r requirements.txt
 task dev
 ```
 
+### Test
+
+```
+# Run Python library test
+pytest
+
+# Run Rust library test
+cargo test
+```
+
 ### Build Release Wheel
 
 ``` bash
-maturin build --release -o dist
+task build
 ```

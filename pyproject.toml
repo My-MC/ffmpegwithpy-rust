@@ -1,29 +1,3 @@
-[build-system]
-requires = ["maturin>=0.13,<0.14"]
-build-backend = "maturin"
-
-[project]
-name = "ffmpegwithpy"
-requires-python = ">=3.7"
-classifiers = [
-    "Programming Language :: Rust",
-    "Programming Language :: Python :: Implementation :: CPython",
-    "Programming Language :: Python :: Implementation :: PyPy",
-]
-
-[project.optional-dependencies]
-dev = [
-    "maturin==0.14.2",
-    "pytest==7.2.0",
-    "black==22.10.0",
-    "isort==5.10.1",
-    "taskipy==1.10.3",
-    "ruff==0.0.137",
-]
-
-[tool.maturin]
-python-source = "python"
-
 [tool.black]
 line-length = 119
 exclude = '''
@@ -60,4 +34,6 @@ fmt = "task fmt_black & task fmt_ruff &task fmt_rust"
 
 lint = "ruff ."
 
-dev = "maturin dev -E dev"
+dev = "maturin dev -E dev --manifest-path=ffmpegwithpy-rust/Cargo.toml"
+
+build = "maturin build --release -o dist --manifest-path=ffmpegwithpy-rust/Cargo.toml"
