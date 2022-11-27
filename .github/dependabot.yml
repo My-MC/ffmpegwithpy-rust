@@ -16,6 +16,6 @@ updates:
       interval: "daily"
 
   - package-ecosystem: "pip"
-    directory: "/"
+    directory: "/ffmpegwithpy-rust"
     schedule:
       interval: "daily"
