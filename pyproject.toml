@@ -35,3 +35,5 @@ fmt = "task fmt_black & task fmt_ruff &task fmt_rust"
 lint = "ruff ."
 
 dev = "maturin dev -E dev --manifest-path=ffmpegwithpy-rust/Cargo.toml"
+
+build = "maturin build --release -o dist --manifest-path=ffmpegwithpy-rust/Cargo.toml"
