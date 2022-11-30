@@ -6,6 +6,14 @@
 			"installTools": false
 		},
 		"ghcr.io/devcontainers/features/rust:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"redhat.vscode-yaml",
+				"ritwickdey.LiveServer"
+			]
+		}
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/implementors/features.
