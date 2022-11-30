@@ -8,5 +8,5 @@ edition = "2021"
 [dependencies]
 
 [dev-dependencies]
-rstest = "0.15.0"
+rstest = "0.16.0"
 maplit = "1.0.2"

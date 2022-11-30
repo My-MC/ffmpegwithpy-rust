@@ -5,7 +5,8 @@
 		"ghcr.io/devcontainers/features/python:1": {
 			"installTools": false
 		},
-		"ghcr.io/devcontainers/features/rust:1": {}
+		"ghcr.io/devcontainers/features/rust:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
 	"customizations": {
 		"vscode": {
