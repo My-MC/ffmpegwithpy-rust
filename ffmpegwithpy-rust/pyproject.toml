@@ -21,6 +21,7 @@ dev = [
     "ruff==0.0.141",
 ]
 
+doc = ["mkdocs==1.4.2","mkdocs-material==8.5.10"]
+
 [tool.maturin]
 python-source = "python"
-
