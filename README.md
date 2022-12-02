@@ -18,7 +18,7 @@ task dev
 
 ### Test
 
-```
+``` bash
 # Run Python library test
 pytest
 
@@ -31,3 +31,7 @@ cargo test
 ``` bash
 task build
 ```
+
+## License
+
+This repository is licensed under the MIT license.
