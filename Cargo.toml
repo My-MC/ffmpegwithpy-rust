@@ -1,6 +1,9 @@
 [workspace]
 members = ["ffmpegwithpy-rust", "ffmpegwithpy-core"]
 
+[workspace.package]
+license = "MIT"
+
 [profile.release]
 strip = true
 opt-level = "z"
