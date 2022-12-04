@@ -35,8 +35,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Create venv
+        uses: ./github/actions/create_venv
+
       - name: Build docs
-        run: ./scripts/build_docs.sh
+        run: |
+          source .venv/bin/activate
+          ./scripts/build_docs.sh
         shell: bash
 
       - name: Setup Pages
@@ -63,8 +68,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Create venv
+        uses: ./github/actions/create_venv
+
       - name: Build docs
-        run: bash ./scripts/build_docs.sh
+        run: |
+          source .venv/bin/activate
+          ./scripts/build_docs.sh
 
       - name: Setup Pages
         uses: actions/configure-pages@v2

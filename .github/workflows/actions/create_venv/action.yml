@@ -1,0 +1,18 @@
+name: Create venv
+description: Create venv for Python
+
+runs:
+  using: composite
+  steps:
+
+    - uses: actions/cache@v3.0.11
+      id: venv_cache
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-${{ hashFiles('./pyproject.toml') }}
+      shell: bash
+
+    - name: Create venv
+      if: steps.venv_cache.outputs.cache-hit != 'true'
+      run: python -m venv .venv
+      shell: bash
