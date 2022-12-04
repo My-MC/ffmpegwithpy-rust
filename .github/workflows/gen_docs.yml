@@ -41,8 +41,8 @@ jobs:
         run: |
           source .venv/bin/activate
           pip install mkdocs mkdocs-material
-          ./scripts/build_docs.sh
-        shell: bash
+          mkdocs build --site-dir ../../../site --config-file ffmpegwithpy-rust/docs/en/mkdocs.yml
+          mkdocs build --site-dir ../../../site/ja --config-file ffmpegwithpy-rust/docs/ja/mkdocs.yml
 
       - name: Setup Pages
         uses: actions/configure-pages@v2
@@ -75,7 +75,8 @@ jobs:
         run: |
           source .venv/bin/activate
           pip install mkdocs mkdocs-material
-          ./scripts/build_docs.sh
+          mkdocs build --site-dir ../../../site --config-file ffmpegwithpy-rust/docs/en/mkdocs.yml
+          mkdocs build --site-dir ../../../site/ja --config-file ffmpegwithpy-rust/docs/ja/mkdocs.yml
 
       - name: Setup Pages
         uses: actions/configure-pages@v2
