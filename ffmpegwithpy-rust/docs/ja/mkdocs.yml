@@ -1,5 +1,5 @@
 site_name: ffmpegwithpy
-site_url: https://my-mc.github.io/ffmpegwithpy-rust/ja
+site_url: https://my-mc.github.io/
 theme:
   name: material
   language: ja
@@ -27,10 +27,10 @@ nav:
 extra:
   alternate:
     - name: English
-      link: /
+      link: /ffmpegwithpy-rust/
       lang: en
     - name: Japanese
-      link: /ja/
+      link: /ffmpegwithpy-rust/ja/
       lang: ja
 
 markdown_extensions:
