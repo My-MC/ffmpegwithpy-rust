@@ -51,7 +51,7 @@ jobs:
         uses: actions/deploy-pages@v1
 
   dev_deploy:
-    if: github.event_name == `pull_request`
+    if: github.event.pull_request
 
     environment:
       name: development_document
