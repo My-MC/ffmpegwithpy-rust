@@ -12,9 +12,19 @@ exclude = '''
 '''
 
 [tool.ruff]
+target-version = "py37"
+
 line-length = 119
 
-select = ["F", "E", "W", "I"]
+select = [
+    "F",  # pyflakes
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+    "N",  # pep8-naming
+]
 
 exclude = [
     ".git",
@@ -28,7 +38,7 @@ exclude = [
 
 [tool.taskipy.tasks]
 fmt_black = "black ."
-fmt_ruff = "ruff . --fix"
+fmt_ruff = "ruff ."
 fmt_rust = "cargo fmt"
 fmt = "task fmt_black & task fmt_ruff &task fmt_rust"
 
