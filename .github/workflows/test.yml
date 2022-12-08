@@ -24,7 +24,7 @@ jobs:
         id: venv_cache
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ hashFiles('./pyproject.toml') }}
+          key: venv-${{ runner.os }}-${{ hashFiles('./ffmpegwithpy-rust/pyproject.toml') }}
 
       - name: Create venv
         if: steps.venv_cache.outputs.cache-hit != 'true'
