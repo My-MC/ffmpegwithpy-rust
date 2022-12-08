@@ -76,3 +76,6 @@ docs/_build/
 # FFmpeg
 ffmpeg.exe
 ffprobe.exe
+
+# Docs builds
+site
