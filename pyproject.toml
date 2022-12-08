@@ -11,6 +11,10 @@ exclude = '''
 )
 '''
 
+[tool.isort]
+profile = "black"
+line_length = 119
+
 [tool.ruff]
 target-version = "py37"
 
@@ -20,7 +24,7 @@ select = [
     "F",  # pyflakes
     "E",  # pycodestyle errors
     "W",  # pycodestyle warnings
-    "I",  # isort
+    # "I",  # isort
     "C",  # flake8-comprehensions
     "B",  # flake8-bugbear
     "N",  # pep8-naming
@@ -38,9 +42,9 @@ exclude = [
 
 [tool.taskipy.tasks]
 fmt_black = "black ."
-fmt_ruff = "ruff ."
+fmt_isort = "isort ."
 fmt_rust = "cargo fmt"
-fmt = "task fmt_black & task fmt_ruff &task fmt_rust"
+fmt = "task fmt_black & task fmt_isort &task fmt_rust"
 
 lint = "ruff ."
 
