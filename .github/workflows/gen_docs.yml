@@ -1,0 +1,102 @@
+name: CI docs
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches:
+      - master
+  pull_request:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    if: github.event.pull_request == 0
+
+    environment:
+      name: document
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.3.0
+        with:
+          python-version: "3.7"
+          cache: "pip"
+          cache-dependency-path: "ffmpegwithpy-rust/pyproject.toml"
+
+      - name: Install doc dependencies
+        run: pip install mkdocs mkdocs-material
+
+      - name: Build docs
+        run: |
+          mkdocs build --site-dir ../../../site --config-file ffmpegwithpy-rust/docs/en/mkdocs.yml
+          mkdocs build --site-dir ../../../site/ja --config-file ffmpegwithpy-rust/docs/ja/mkdocs.yml
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload entire repository
+          path: ./site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+
+  dev_deploy:
+    if: github.event.pull_request
+
+    environment:
+      name: development_document
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.3.0
+        with:
+          python-version: "3.7"
+          cache: "pip"
+          cache-dependency-path: "ffmpegwithpy-rust/pyproject.toml"
+
+      - name: Install doc dependencies
+        run: pip install mkdocs mkdocs-material
+
+      - name: Build docs
+        run: |
+          mkdocs build --site-dir ../../../site --config-file ffmpegwithpy-rust/docs/en/mkdocs.yml
+          mkdocs build --site-dir ../../../site/ja --config-file ffmpegwithpy-rust/docs/ja/mkdocs.yml
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload entire repository
+          path: ./site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
