@@ -1,19 +1,10 @@
-name: format
+name: lint
 
 on:
   pull_request:
 
 jobs:
-  black:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Run black
-        uses: psf/black@stable
-
-  isort:
+  ruff:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,8 +17,8 @@ jobs:
           cache: "pip"
           cache-dependency-path: "pyproject.toml"
 
-      - name: Install isort
-        run: pip install isort
+      - name: Install ruff
+        run: pip install ruff
 
-      - name: Run isort
-        run: isort
+      - name: Run ruff
+        run: task lint

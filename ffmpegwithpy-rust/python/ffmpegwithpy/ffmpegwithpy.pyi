@@ -1,6 +1,5 @@
 from typing import Dict, Optional
 
-
 def get_filename(filepath: str, file_format: str) -> str:
     """Get file name after processing
 
