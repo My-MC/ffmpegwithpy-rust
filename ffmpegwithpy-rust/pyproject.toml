@@ -18,7 +18,7 @@ dev = [
     "black==22.10.0",
     "isort==5.10.1",
     "taskipy==1.10.3",
-    "ruff==0.0.170",
+    "ruff==0.0.176",
 ]
 
 doc = ["mkdocs==1.4.2","mkdocs-material==8.5.10"]
