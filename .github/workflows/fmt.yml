@@ -4,8 +4,7 @@ on:
   workflow_run:
     workflows: ["Build"]
     types: [completed]
-  pull_request:
-
+    
 jobs:
   black:
     if: github.event.pull_request
