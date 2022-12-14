@@ -8,7 +8,7 @@ on:
   pull_request:
 
 jobs:
-  linux:
+  buikd_linux:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -27,7 +27,7 @@ jobs:
           name: wheels
           path: dist
 
-  windows:
+  build_windows:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
@@ -45,7 +45,7 @@ jobs:
           name: wheels
           path: dist
 
-  macos:
+  build_macos:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
@@ -63,11 +63,98 @@ jobs:
           name: wheels
           path: dist
 
+  black:
+    if: github.event.pull_request
+    needs: build_linux
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.3.1
+        with:
+          python-version: "3.7"
+          cache: "pip"
+          cache-dependency-path: "ffmpegwithpy-rust/pyproject.toml"
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3.0.1
+        with:
+          name: wheels
+
+      - name: Install dependencies
+        uses: |
+          files=(wheels/*linux*)
+          pip install "${files[@]}[dev]"
+
+      - name: Run black
+        uses: task fmt_black
+
+  isort:
+    if: github.event.pull_request
+    needs: build_linux
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.3.1
+        with:
+          python-version: "3.7"
+          cache: "pip"
+          cache-dependency-path: "ffmpegwithpy-rust/pyproject.toml"
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3.0.1
+        with:
+          name: wheels
+
+      - name: Install dependencies
+        uses: |
+          files=(wheels/*linux*)
+          pip install "${files[@]}[dev]"
+
+      - name: Run isort
+        run: task fmt_isort
+
+  ruff:
+    if: github.event.pull_request
+    needs: build_linux
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.3.1
+        with:
+          python-version: "3.7"
+          cache: "pip"
+          cache-dependency-path: "ffmpegwithpy-rust/pyproject.toml"
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3.0.1
+        with:
+          name: wheels
+
+      - name: Install dependencies
+        uses: |
+          files=(wheels/*linux*)
+          pip install "${files[@]}[dev]"
+
+      - name: Run ruff
+        run: task lint
+
   release:
     name: Release
     runs-on: ubuntu-latest
     if: "startsWith(github.ref, 'refs/tags/')"
-    needs: [macos, windows, linux]
+    needs: [build_macos, build_windows, build_linux]
     steps:
       - uses: actions/download-artifact@v3.0.1
         with:
