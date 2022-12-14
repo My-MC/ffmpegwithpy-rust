@@ -83,6 +83,7 @@ jobs:
         uses: actions/download-artifact@v3.0.1
         with:
           name: wheels
+          path: wheels
 
       - name: Install dependencies
         run: |
@@ -112,6 +113,7 @@ jobs:
         uses: actions/download-artifact@v3.0.1
         with:
           name: wheels
+          path: wheels
 
       - name: Install dependencies
         run: |
@@ -141,6 +143,7 @@ jobs:
         uses: actions/download-artifact@v3.0.1
         with:
           name: wheels
+          path: wheels
 
       - name: Install dependencies
         run: |
