@@ -2,7 +2,7 @@ name: lint
 
 on:
   workflow_run:
-    workflows: ["Build"]
+    workflows: ["CI"]
     types: [completed]
 
 jobs:

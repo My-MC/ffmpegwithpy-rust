@@ -2,9 +2,9 @@ name: format
 
 on:
   workflow_run:
-    workflows: ["Build"]
+    workflows: ["CI"]
     types: [completed]
-    
+
 jobs:
   black:
     if: github.event.pull_request
