@@ -20,7 +20,7 @@ jobs:
         with:
           manylinux: auto
           command: build
-          args: --release -o dist --manifest-path=ffmpegwithpy-rust/Cargo.toml --find-interpreter
+          args: --release --sdist -o dist --manifest-path=ffmpegwithpy-rust/Cargo.toml --find-interpreter
       - name: Upload wheels
         uses: actions/upload-artifact@v3.1.1
         with:
