@@ -19,10 +19,10 @@ dev = [
     "isort==5.11.2",
     "taskipy==1.10.3",
     "ruff==0.0.193",
+    "pre-commit==2.20.0",
 ]
 
 doc = ["mkdocs==1.4.2","mkdocs-material==8.5.10"]
 
 [tool.maturin]
 python-source = "python"
-
