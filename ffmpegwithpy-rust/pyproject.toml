@@ -22,7 +22,7 @@ dev = [
     "pre-commit==2.20.0",
 ]
 
-doc = ["mkdocs==1.4.2","mkdocs-material==8.5.10"]
+doc = ["mkdocs==1.4.2","mkdocs-material==8.5.11"]
 
 [tool.maturin]
 python-source = "python"
