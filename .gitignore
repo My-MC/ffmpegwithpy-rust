@@ -71,7 +71,7 @@ docs/_build/
 .vscode/
 
 # Pyenv
-.python-version
+# .python-version
 
 # FFmpeg
 ffmpeg.exe
