@@ -50,4 +50,4 @@ lint = "ruff ."
 
 dev = "maturin dev -E dev,doc --manifest-path=ffmpegwithpy-rust/Cargo.toml"
 
-build = "maturin build --release -o dist --manifest-path=ffmpegwithpy-rust/Cargo.toml"
+build = "maturin build --release --sdist -o dist --manifest-path=ffmpegwithpy-rust/Cargo.toml"
