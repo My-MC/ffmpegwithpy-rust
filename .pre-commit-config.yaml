@@ -1,0 +1,33 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v3.2.0
+      hooks:
+          - id: check-yaml
+          - id: check-toml
+          - id: check-added-large-files
+          - id: end-of-file-fixer
+          - id: trailing-whitespace
+
+    - repo: https://github.com/psf/black
+      rev: 22.12.0
+      hooks:
+          - id: black
+            args: [--config=./pyproject.toml ]
+
+    - repo: https://github.com/pycqa/isort
+      rev: 5.11.2
+      hooks:
+          - id: isort
+            name: isort (pyi)
+            types: [pyi]
+
+    - repo: https://github.com/charliermarsh/ruff-pre-commit
+      # Ruff version.
+      rev: "v0.0.193"
+      hooks:
+          - id: ruff
+
+default_language_version:
+    python: python3.7
