@@ -16,7 +16,7 @@ jobs:
       - name: Rust Cache
         uses: Swatinem/rust-cache@v2.2.0
 
-      - uses: messense/maturin-action@v1.34.0
+      - uses: messense/maturin-action@v1.35.0
         with:
           manylinux: auto
           command: build
@@ -35,7 +35,7 @@ jobs:
       - name: Rust Cache
         uses: Swatinem/rust-cache@v2.2.0
 
-      - uses: messense/maturin-action@v1.34.0
+      - uses: messense/maturin-action@v1.35.0
         with:
           command: build
           args: --release -o dist --manifest-path=ffmpegwithpy-rust/Cargo.toml --find-interpreter
@@ -53,7 +53,7 @@ jobs:
       - name: Rust Cache
         uses: Swatinem/rust-cache@v2.2.0
 
-      - uses: messense/maturin-action@v1.34.0
+      - uses: messense/maturin-action@v1.35.0
         with:
           command: build
           args: --release -o dist --universal2 --manifest-path=ffmpegwithpy-rust/Cargo.toml --find-interpreter
@@ -163,7 +163,7 @@ jobs:
         with:
           name: wheels
       - name: Publish to PyPI
-        uses: messense/maturin-action@v1.34.0
+        uses: messense/maturin-action@v1.35.0
         env:
           MATURIN_PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
         with:
