@@ -20,7 +20,7 @@ jobs:
         with:
           toolchain: stable
 
-      - uses: actions/cache@v3.2.2
+      - uses: actions/cache@v3.2.3
         id: venv_cache
         with:
           path: .venv
