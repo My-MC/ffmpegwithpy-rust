@@ -62,8 +62,9 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
 
+  # if Only when labeled dev_doc
   dev_deploy:
-    if: github.event.pull_request
+    if: ${{ github.event.pull_request && github.event.label.name == 'dev_doc' }}
 
     environment:
       name: development_document
