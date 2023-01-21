@@ -51,7 +51,7 @@ jobs:
           mkdocs build --site-dir ../../../site/ja --config-file ffmpegwithpy-rust/docs/ja/mkdocs.yml
 
       - name: Setup Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v3
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
@@ -91,7 +91,7 @@ jobs:
           mkdocs build --site-dir ../../../site/ja --config-file ffmpegwithpy-rust/docs/ja/mkdocs.yml
 
       - name: Setup Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v3
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
