@@ -6,6 +6,7 @@ on:
     branches:
       - master
   pull_request:
+      - types: [opened, synchronize, labeled]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -64,7 +65,7 @@ jobs:
 
   # if Only when labeled dev_doc
   dev_deploy:
-    if: ${{ github.event.pull_request && github.event.label.name == 'dev_doc' }}
+    if: ${{ github.event.pull_request && contains(github.event.pull_request.labels.*.name, 'dev_doc') }}
 
     environment:
       name: development_document
