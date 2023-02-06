@@ -16,7 +16,7 @@ dev = [
     "maturin==0.14.10",
     "pytest==7.2.1",
     "black==22.12.0",
-    "isort==5.11.4",
+    "isort==5.11.5",
     "taskipy==1.10.3",
     "ruff==0.0.223",
     "pre-commit==2.21.0",
