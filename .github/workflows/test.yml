@@ -20,7 +20,7 @@ jobs:
         with:
           toolchain: stable
 
-      - uses: actions/cache@v3.2.3
+      - uses: actions/cache@v3.3.1
         id: venv_cache
         with:
           path: .venv
@@ -31,7 +31,7 @@ jobs:
         run: python -m venv .venv
 
       - name: Rust Cache
-        uses: Swatinem/rust-cache@v2.2.0
+        uses: Swatinem/rust-cache@v2.2.1
 
       - name: Install Dev dependence And run tests
         run: |
@@ -52,7 +52,7 @@ jobs:
           toolchain: stable
 
       - name: Rust Cache
-        uses: Swatinem/rust-cache@v2.2.0
+        uses: Swatinem/rust-cache@v2.2.1
 
       - name: Run unittest
         uses: actions-rs/cargo@v1
