@@ -17,7 +17,7 @@ dev = [
     "pytest==7.2.1",
     "black==23.1.0",
     "isort==5.11.5",
-    "taskipy==1.10.3",
+    "taskipy==1.10.4",
     "ruff==0.0.257",
     "pre-commit==2.21.0",
 ]
