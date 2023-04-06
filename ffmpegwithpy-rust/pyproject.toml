@@ -13,16 +13,16 @@ classifiers = [
 
 [project.optional-dependencies]
 dev = [
-    "maturin==0.14.15",
-    "pytest==7.2.1",
-    "black==23.1.0",
+    "maturin==0.14.16",
+    "pytest==7.2.2",
+    "black==23.3.0",
     "isort==5.11.5",
-    "taskipy==1.10.3",
+    "taskipy==1.10.4",
     "ruff==0.0.257",
     "pre-commit==2.21.0",
 ]
 
-doc = ["mkdocs==1.4.2","mkdocs-material==9.1.3"]
+doc = ["mkdocs==1.4.2","mkdocs-material==9.1.5"]
 
 [tool.maturin]
 python-source = "python"
