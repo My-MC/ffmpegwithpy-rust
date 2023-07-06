@@ -9,5 +9,5 @@ license.workspace = true
 [dependencies]
 
 [dev-dependencies]
-rstest = "0.17.0"
+rstest = "0.18.1"
 maplit = "1.0.2"
