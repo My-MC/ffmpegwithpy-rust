@@ -30,4 +30,4 @@ repos:
           - id: ruff
 
 default_language_version:
-    python: python3.7
+    python: python3.8
