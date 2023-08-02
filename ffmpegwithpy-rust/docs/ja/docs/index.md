@@ -17,7 +17,7 @@ ffmpegwithpyはFFmpegをPython上から実行するための、FFmpegラッパ�
 
 ## インストール要件
 
-Python 3.7+
+Python 3.8+
 
 !!! warning "注意"
 
