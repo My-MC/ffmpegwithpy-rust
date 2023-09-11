@@ -15,7 +15,7 @@ classifiers = [
 dev = [
     "maturin==1.1.0",
     "pytest==7.3.1",
-    "black==23.3.0",
+    "black==23.9.1",
     "isort==5.11.5",
     "taskipy==1.10.4",
     "ruff==0.0.257",
